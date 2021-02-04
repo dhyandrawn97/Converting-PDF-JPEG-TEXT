@@ -1,0 +1,9 @@
+import import_ipynb
+from WordToText import img2text as i2t
+text = i2t('lorem_ipsum.png')
+print(text)
+
+import import_ipynb
+from WordToText import img2textdir as i2tdir
+text = i2tdir(r'C:\Users\ASUS\coba_ya')
+print('done')
