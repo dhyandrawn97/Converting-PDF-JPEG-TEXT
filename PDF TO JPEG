@@ -1,0 +1,33 @@
+from pdf2image import convert_from_path
+import os, shutil
+
+#File name
+pdf_file = "geothermal.pdf"
+
+#Let the conversion begin
+pages = convert_from_path(pdf_file)
+
+#replace .pdf with blank so that we can add image extension while saving it
+img_file = pdf_file.replace(".pdf"," ")
+
+#Saving pages in jpeg format
+count = 0
+for page in pages :
+    jpeg_file = img_file + "-" + str(count) + ".jpeg"
+    page.save(jpeg_file, 'JPEG')
+    count +=1
+
+
+#move file .jpg or .png to folder
+src = r'C:\Users\ASUS\coba_ya\pdf2image' + '\\'
+dest = r'C:\Users\ASUS\coba_ya\pdf2image\p' + '\\'
+folder = os.listdir(src)
+print(folder)
+
+for path, dir, files in os.walk(src):
+    if files:
+        for file in files:
+            if file.endswith('.jpeg' or '.png'):
+                shutil.move(path + '\\' + file, dest + file)
+                print("done")
+
